@@ -5,11 +5,11 @@ using ProyectoRestaurante.Repository;
 
 namespace ProyectoRestaurante.Controllers
 {
-    public class MenuController : Controller
+    public class ItemMenuController : Controller
     {
         private RepositoryMenu repo;
 
-        public MenuController(RepositoryMenu repo)
+        public ItemMenuController(RepositoryMenu repo)
         {
             this.repo = repo;
         }
