@@ -9,6 +9,17 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<hr/>
+
+
+
+<a asp-controller="Pedido"
+   asp-action="Pedido"
+   class="btn btn-outline-success">
+    Vuelta
+</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -49,9 +60,19 @@
                 @Html.DisplayFor(modelItem => item.Precio)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <a asp-controller="ItemMenu"
+                   asp-action="Edit"
+                   asp-route-idmenu="@item.IdMenu"
+                       class="btn btn-outline-dark">
+                        Editar
+                    </a>
+                    |
+                    <a asp-controller="ItemMenu"
+                   asp-action="Delete"
+                   asp-route-idmenu="@item.IdMenu"
+                       class="btn btn-outline-warning">
+                        Eliminar
+                    </a>
             </td>
         </tr>
 }

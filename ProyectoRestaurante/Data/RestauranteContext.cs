@@ -11,5 +11,8 @@ namespace ProyectoRestaurante.Data
 
 
         public DbSet<ItemMenu> ItemMenu { get; set; }
+        public DbSet<Pedido> Pedido { get; set; }
+
+        public DbSet<Mesa> Mesa { get; set; }
     }
 }

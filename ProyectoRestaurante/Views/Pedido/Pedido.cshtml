@@ -1,0 +1,90 @@
+﻿@model IEnumerable<ProyectoRestaurante.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Pedido";
+}
+
+<h1>Pedido</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<hr/>
+<a asp-controller="ItemMenu"
+   asp-action="ItemMenu"
+   class="btn btn-outline-dark">
+    Carta
+</a>
+
+<hr />
+<a asp-controller="Mesa"
+   asp-action="Mesa"
+   class="btn btn-outline-success">
+    Vuelta
+</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemsMenu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMenu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemsMenu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMenu)
+            </td>
+            <td>
+                    <a asp-controller="Pedido"
+                   asp-action="Edit"
+                   asp-route-idpedido="@item.IdPedido"
+                       class="btn btn-outline-dark">
+                        Editar
+                    </a>
+                    |
+                    <a asp-controller="Pedido"
+                   asp-action="Delete"
+                   asp-route-idpedido="@item.IdPedido"
+                       class="btn btn-outline-warning">
+                        Eliminar
+                    </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

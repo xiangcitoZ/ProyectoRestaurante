@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using NuGet.Configuration;
 using ProyectoRestaurante.Data;
 using ProyectoRestaurante.Repository;
 
@@ -9,6 +10,8 @@ string connectionString =
     builder.Configuration.GetConnectionString("SqlComanda");
 
 builder.Services.AddTransient<RepositoryMenu>();
+builder.Services.AddTransient<RepositoryPedido>();
+builder.Services.AddTransient<RepositoryMesa>();
 
 builder.Services.AddDbContext<RestauranteContext>
     (options => options.UseSqlServer(connectionString));
@@ -40,6 +43,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=ItemMenu}/{action=ItemMenu}/{id?}");
+    pattern: "{controller=Mesa}/{action=Mesa}/{id?}");
 
 app.Run();
