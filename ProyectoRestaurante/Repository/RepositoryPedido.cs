@@ -28,6 +28,15 @@ namespace ProyectoRestaurante.Repository
             return consulta.FirstOrDefault();
         }
 
+        //public List<ItemMenu> GetItemMenuPedidos(int idmenu)
+        //{
+        //    var consulta = from datos in this.context.ItemMenu
+        //                   where datos.IdMenu == idmenu
+        //                   select datos;
+        //    return consulta.ToList();
+        //}
+
+
         public async Task InsertPedidoAsync
          (int idpedido, decimal total, DateTime fecha, string itemsMenu,
             int idmesa,int idmenu)

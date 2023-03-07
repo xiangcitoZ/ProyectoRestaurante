@@ -19,6 +19,12 @@ namespace ProyectoRestaurante.Controllers
             return View(Pedidos);
         }
 
+        public IActionResult ItemPedidos(int idmenu)
+        {
+            List<ItemMenu> ItemPedidos = this.repo.GetItemMenuPedidos(idmenu);
+            return View(ItemPedidos);
+        }
+
         public IActionResult Create()
         {
             return View();
