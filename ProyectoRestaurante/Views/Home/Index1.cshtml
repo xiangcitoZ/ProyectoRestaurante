@@ -1,152 +1,274 @@
-﻿
+﻿@model IEnumerable<ProyectoRestaurante.Models.ItemMenu>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMenu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdMenu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imagen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    <a asp-controller="ItemMenu"
+                   asp-action="Edit"
+                   asp-route-idmenu="@item.IdMenu"
+                       class="btn btn-outline-dark">
+                        Editar
+                    </a>
+                    |
+                    <a asp-controller="ItemMenu"
+                   asp-action="Delete"
+                   asp-route-idmenu="@item.IdMenu"
+                       class="btn btn-outline-warning">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
+<div class="register">
+    <div class="left">
+        <div class="order-window">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>#</td>
+                        <td>Item</td>
+                        <td>Price</td>
+                        <td>GL</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Spaghetti</td>
+                        <td>$9.50</td>
+                        <td>EN</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Side Salad</td>
+                        <td>$4.00</td>
+                        <td>SS</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Hamburger</td>
+                        <td>$7.00</td>
+                        <td>EN</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Chicken Alfredo</td>
+                        <td>$12.00</td>
+                        <td>EN</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Soda</td>
+                        <td>$2.00</td>
+                        <td>BV</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Iced tea</td>
+                        <td>$1.50</td>
+                        <td>BV</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="order-total">
+            <span>$38.00</span>
+        </div>
+        <div class="buttons">
 
-<div id="grid">
-    <div id="header">
-        <button id="btnMenu" onclick="switchSidebar();">
-            <i class="fas fa-bars"></i>
-        </button>
-        <a href="" class="image__container">
-            <img src="https://www.foot.com/wp-content/uploads/2017/03/placeholder.gif" alt="">
-        </a>
-        <div class="navbar">
-            Mesas
-            <button class="btn">1</button>
-            <button class="btn btn--not-available">2</button>
-            <button class="btn">3</button>
-            <button class="btn">4</button>
-            <button class="btn">5</button>
-            <button class="btn">+</button>
-            <button class="btn">-</button>
+            <button>
+                <i class="fas fa-print"></i>
+                Print
+            </button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>
+                <i class="fas fa-ban"></i>
+                Void
+            </button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>
+                <i class="fa fa-times"></i>
+                QTY
+            </button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>
+                <i class="fas fa-sign-out-alt"></i>
+                Exit
+            </button>
+            <div></div>
+            <button>0</button>
+            <button>.00</button>
         </div>
     </div>
-    <div id="sidebar">
-        <div id="menu" class="menu--enabled">
-            <details class="section">
-                <summary class="section__title">Administración</summary>
-                <a href="" class="section__element">Tipo de pago</a>
-                <a href="" class="section__element">Pago de sueldos</a>
-                <a href="" class="section__element">Gastos</a>
-                <a href="" class="section__element">Perfil y usuarios</a>
-            </details>
-            <details class="section">
-                <summary class="section__title">Configuración</summary>
-                <a href="" class="section__element">Accesos</a>
-                <a href="" class="section__element">Compañia y sucursal</a>
-                <a href="" class="section__element">Ciudad, estado y país</a>
-                <a href="" class="section__element">Adeudos</a>
-            </details>
-            <details class="section">
-                <summary class="section__title">Productos</summary>
-                <a href="" class="section__element">Tipo y subtipo</a>
-                <a href="" class="section__element">Promociones</a>
-                <a href="" class="section__element">Productos</a>
-            </details>
-            <details class="section">
-                <summary class="section__title">Caja</summary>
-                <a href="" class="section__element">Mesas y cajas</a>
-                <a href="" class="section__element">Liquidación</a>
-                <a href="" class="section__element">Corte de caja</a>
-                <a href="" class="section__element">Corte de caja general</a>
-                <a href="" class="section__element">Caja-Empleado</a>
-            </details>
-            <details class="section">
-                <summary class="section__title">Venta</summary>
-                <a href="" class="section__element">Comanda</a>
-                <a href="" class="section__element">Devoluciones</a>
-                <a href="" class="section__element">Mesas y cajas</a>
-                <a href="" class="section__element">Nota de venta</a>
-                <a href="" class="section__element">Monitor</a>
-            </details>
+    <div class="right">
+        <div class="categories">
+            <ul>
+                <li><a href="#">All Items</a></li>
+                <li><a href="#">Beverages</a></li>
+                <li><a href="#">Soup/Salad</a></li>
+                <li><a href="#">Appetizers</a></li>
+                <li><a href="#">Entrees</a></li>
+                <li><a href="#">Desserts</a></li>
+            </ul>
         </div>
-    </div>
-    <div id="content">
-        <div class="products">
-            <button class="icon">
-                <i class="fas fa-glass-martini-alt"></i>
-            </button>
-            <button class="icon">
-                <i class="fas fa-coffee"></i>
-            </button>
-            <button class="icon">
-                <i class="fas fa-utensils"></i>
-            </button>
-            <button class="icon">
-                <i class="fas fa-beer"></i>
-            </button>
-            <button class="icon">
-                <i class="fas fa-leaf"></i>
-            </button>
+        <div class="menu-items">
+            <ul>
+                <li>
+                    <!--           <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Water</span>
+                    <span class="category">Beverages</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Iced Tea</span>
+                    <span class="category">Beverages</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Soda</span>
+                    <span class="category">Beverages</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-beer fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Coffee</span>
+                    <span class="category">Beverages</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">House Salad</span>
+                    <span class="category">Soup/Salad</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Side Salad</span>
+                    <span class="category">Soup/Salad</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Spaghetti</span>
+                    <span class="category">Entree</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Chicken Alfredo</span>
+                    <span class="category">Entree</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Hamburger</span>
+                    <span class="category">Entree</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Cheeseburger</span>
+                    <span class="category">Entree</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Mozzarella Sticks</span>
+                    <span class="category">Appetizers</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Nachos</span>
+                    <span class="category">Appetizers</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Chocolate Cake</span>
+                    <span class="category">Desserts</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Apple Pie</span>
+                    <span class="category">Desserts</span>
+                </li>
+                <li>
+                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
+                    <span class="item">Blueberry Cobbler</span>
+                    <span class="category">Entree</span>
+                </li>
+
+            </ul>
         </div>
-        <div class="panel">
-            <div class="head">
-                <div class="banner">
-                    <i class="fas fa-home"></i>
-                    <span class="title">Bebidas</span>
-                </div>
-            </div>
-            <div class="panal">
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-            </div>
-        </div>
-        <div class="info">
-            <div class="head">
-                <button class="btn active">1</button>
-                <button class="btn">2</button>
-                <button class="btn">3</button>
-            </div>
-            <div class="display">
-            </div>
-        </div>
-        <div class="calculator">
-        </div>
-        <div class="controls"></div>
-    </div>
-    <div id="messages">
-        <div id="alert-region">
-            <div class="alert">
-                <div class="alert__title">
-                    <span class="alert__title--text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias aliquid totam quibusdam ducimus maiores in officia laudantium soluta dolorem quas necessitatibus nemo temporibus, magni, quis nihil. Sit, aspernatur id? Ratione!</span>
-                    <span class="alert__title--icon">
-                        <i class="fas fa-times"></i>
-                    </span>
-                </div>
-                <div class="alert__body">
-                    <label id="msg_alert" class="alert__body--msg">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam incidunt adipisci maiores quas id numquam nobis placeat iusto, suscipit atque perspiciatis ea molestias, soluta provident. Fugit quae incidunt cum. Mollitia.</label>
-                    <button id="btnAccept" class="alert__body--accept btn">Aceptar</button>
-                </div>
-            </div>
-        </div>
-        <div id="notification-region">
-            <div class="notification">
-                <span class="msg_notification"></span>
-            </div>
-        </div>
-        <div id="modal-region" class="modal-image">
-            <div class="image">
-                <img id="img_modal" />
-                <span class="close-alert"><i class="fas fa-times"></i></span>
-            </div>
+        <div class="payment-keys">
+            <ul>
+                <li>
+                    <i class="fas fa-money-bill-alt fa-2x fa-fw" data-fa-transform="up-2"></i> Cash
+                </li>
+                <li>
+                    <i class="fas fa-check-square fa-2x fa-fw" data-fa-transform="up-2"></i> Check
+                </li>
+                <li>
+                    <i class="fas fa-credit-card fa-2x fa-fw" data-fa-transform="up-2"></i> Credit / Debit
+                </li>
+                <li>
+                    <i class="fas fa-gift fa-2x fa-fw" data-fa-transform="up-2"></i> Gift Card
+                </li>
+                <li>
+                    <i class="fas fa-user fa-2x fa-fw" data-fa-transform="up-2"></i> Employee Charge
+                </li>
+            </ul>
         </div>
     </div>
 </div>
+
+<script>
+    // Example Menu
+
+    var menu = [
+        {
+            item: "Spaghetti",
+            price: 9.50,
+            tax: true,
+            shortname: "Spag",
+            category: "entree",
+            glCode: "EN10",
+        },
+    ]
+</script>

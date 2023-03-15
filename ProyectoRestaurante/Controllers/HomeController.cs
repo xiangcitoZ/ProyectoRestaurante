@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoRestaurante.Models;
+using ProyectoRestaurante.Repository;
 using System.Diagnostics;
 
 namespace ProyectoRestaurante.Controllers
 {
     public class HomeController : Controller
     {
+        private RepositoryMenu repo;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, RepositoryMenu repo)
         {
             _logger = logger;
+            this.repo = repo;
         }
 
         public IActionResult Index()
@@ -19,8 +22,10 @@ namespace ProyectoRestaurante.Controllers
         }
 
         public IActionResult Index1()
-        {
-            return View();
+        {   
+            List <ItemMenu> items = this.repo.GetItemMenu();
+
+            return View(items);
         }
 
         public IActionResult Privacy()
