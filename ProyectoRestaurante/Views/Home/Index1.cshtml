@@ -1,69 +1,15 @@
 ﻿@model IEnumerable<ProyectoRestaurante.Models.ItemMenu>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdMenu)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Imagen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Precio)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdMenu)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Imagen)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Precio)
-                </td>
-                <td>
-                    <a asp-controller="ItemMenu"
-                   asp-action="Edit"
-                   asp-route-idmenu="@item.IdMenu"
-                       class="btn btn-outline-dark">
-                        Editar
-                    </a>
-                    |
-                    <a asp-controller="ItemMenu"
-                   asp-action="Delete"
-                   asp-route-idmenu="@item.IdMenu"
-                       class="btn btn-outline-warning">
-                        Eliminar
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+    @{
+        ViewData["Title"] = "Pedido";
+    }
 
 <div class="register">
     <div class="left">
         <div class="order-window">
             <table>
+               
                 <tbody>
                     <tr>
                         <td>#</td>
@@ -77,36 +23,7 @@
                         <td>$9.50</td>
                         <td>EN</td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Side Salad</td>
-                        <td>$4.00</td>
-                        <td>SS</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Hamburger</td>
-                        <td>$7.00</td>
-                        <td>EN</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Chicken Alfredo</td>
-                        <td>$12.00</td>
-                        <td>EN</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Soda</td>
-                        <td>$2.00</td>
-                        <td>BV</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Iced tea</td>
-                        <td>$1.50</td>
-                        <td>BV</td>
-                    </tr>
+                  
                 </tbody>
             </table>
         </div>
@@ -157,102 +74,28 @@
             </ul>
         </div>
         <div class="menu-items">
-            <ul>
-                <li>
-                    <!--           <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Water</span>
-                    <span class="category">Beverages</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Iced Tea</span>
-                    <span class="category">Beverages</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-beer fa-2x  fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Soda</span>
-                    <span class="category">Beverages</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-beer fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Coffee</span>
-                    <span class="category">Beverages</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">House Salad</span>
-                    <span class="category">Soup/Salad</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Side Salad</span>
-                    <span class="category">Soup/Salad</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Spaghetti</span>
-                    <span class="category">Entree</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Chicken Alfredo</span>
-                    <span class="category">Entree</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Hamburger</span>
-                    <span class="category">Entree</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Cheeseburger</span>
-                    <span class="category">Entree</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Mozzarella Sticks</span>
-                    <span class="category">Appetizers</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Nachos</span>
-                    <span class="category">Appetizers</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Chocolate Cake</span>
-                    <span class="category">Desserts</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Apple Pie</span>
-                    <span class="category">Desserts</span>
-                </li>
-                <li>
-                    <!--           <i class="fas fa-utensils fa-2x fa-fw" data-fa-transform="up-3"></i> -->
-                    <span class="item">Blueberry Cobbler</span>
-                    <span class="category">Entree</span>
-                </li>
-
+            @foreach (var item in Model) {
+             <ul>
+                    <li>
+                        @Html.DisplayFor(modelItem => item.IdMenu),
+                        @Html.DisplayFor(modelItem => item.Nombre),
+                        @Html.DisplayFor(modelItem => item.Descripcion),
+                        @Html.DisplayFor(modelItem => item.Imagen),
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </li>
+                   
             </ul>
+            }
+           
         </div>
-        <div class="payment-keys">
+        <div class="categories">
             <ul>
-                <li>
-                    <i class="fas fa-money-bill-alt fa-2x fa-fw" data-fa-transform="up-2"></i> Cash
-                </li>
-                <li>
-                    <i class="fas fa-check-square fa-2x fa-fw" data-fa-transform="up-2"></i> Check
-                </li>
-                <li>
-                    <i class="fas fa-credit-card fa-2x fa-fw" data-fa-transform="up-2"></i> Credit / Debit
-                </li>
-                <li>
-                    <i class="fas fa-gift fa-2x fa-fw" data-fa-transform="up-2"></i> Gift Card
-                </li>
-                <li>
-                    <i class="fas fa-user fa-2x fa-fw" data-fa-transform="up-2"></i> Employee Charge
-                </li>
+                <li><a href="#">All Items</a></li>
+                <li><a href="#">Beverages</a></li>
+                <li><a href="#">Soup/Salad</a></li>
+                <li><a href="#">Appetizers</a></li>
+                <li><a href="#">Entrees</a></li>
+                <li><a href="#">Desserts</a></li>
             </ul>
         </div>
     </div>

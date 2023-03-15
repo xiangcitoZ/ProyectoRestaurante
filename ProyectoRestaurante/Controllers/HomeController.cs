@@ -8,12 +8,14 @@ namespace ProyectoRestaurante.Controllers
     public class HomeController : Controller
     {
         private RepositoryMenu repo;
+        private RepositoryPedido repopedido;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, RepositoryMenu repo)
+        public HomeController(ILogger<HomeController> logger, RepositoryMenu repo, RepositoryPedido repopedido)
         {
             _logger = logger;
             this.repo = repo;
+            this.repopedido = repopedido;
         }
 
         public IActionResult Index()
@@ -24,7 +26,8 @@ namespace ProyectoRestaurante.Controllers
         public IActionResult Index1()
         {   
             List <ItemMenu> items = this.repo.GetItemMenu();
-
+            List<Pedido> pedido = this.repopedido.GetPedidos();
+            ViewData["PEDIDO"] = pedido;
             return View(items);
         }
 
