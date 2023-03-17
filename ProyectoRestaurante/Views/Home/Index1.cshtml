@@ -74,18 +74,19 @@
             </ul>
         </div>
         <div class="menu-items">
+            <ul>
             @foreach (var item in Model) {
-             <ul>
+             
                     <li>
                         @Html.DisplayFor(modelItem => item.IdMenu),
                         @Html.DisplayFor(modelItem => item.Nombre),
                         @Html.DisplayFor(modelItem => item.Descripcion),
                         @Html.DisplayFor(modelItem => item.Imagen),
                         @Html.DisplayFor(modelItem => item.Precio)
-                    </li>
-                   
-            </ul>
+                    </li>     
+            
             }
+            </ul>
            
         </div>
         <div class="categories">
