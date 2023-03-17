@@ -1,8 +1,142 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<ProyectoRestaurante.Models.ItemMenu>
+
+
+@{
+    ViewData["Title"] = "Pedido";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            $("#contenido").load("/Pedido/Pedido");
+
+        })
+    </script>
+ }
+
+<div class="register">
+    <div class="left">
+        <div class="order-window">
+            <table>
+
+                <tbody>
+                    <tr>
+                        <td>#</td>
+                        <td>Item</td>
+                        <td>Price</td>
+                        <td>GL</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Spaghetti</td>
+                        <td>$9.50</td>
+                        <td>EN</td>
+                    </tr>
+                    <div id="contenido"></div>
+                </tbody>
+            </table>
+        </div>
+        <div class="order-total">
+            <span>$38.00</span>
+        </div>
+        <div class="buttons">
+
+            <button>
+                <i class="fas fa-print"></i>
+                Print
+            </button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>
+                <i class="fas fa-ban"></i>
+                Void
+            </button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>
+                <i class="fa fa-times"></i>
+                QTY
+            </button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>
+                <i class="fas fa-sign-out-alt"></i>
+                Exit
+            </button>
+            <div></div>
+            <button>0</button>
+            <button>.00</button>
+        </div>
+    </div>
+    <div class="right">
+        <div class="categories">
+            <ul>
+                <li><a href="#">Todo</a></li>
+                <li><a href="#">Entrantes</a></li>
+                <li><a href="#">Principal</a></li>
+                <li><a href="#">Segundo</a></li>
+                <li><a href="#">Bebibas</a></li>
+                <li><a href="#">Postre</a></li>
+            </ul>
+        </div>
+        <div class="menu-items">
+            <ul>
+                @foreach (var item in Model)
+                {
+
+                    <li>
+                        <a asp-controller="ItemMenu"
+                       asp-action="ItemMenu">
+                        <img width:"50px" height:"50px" src="@item.Imagen">
+                       @item.Nombre - @item.Precio €
+                        </a>
+                    </li>
+
+                }
+            </ul>
+
+        </div>
+        <div class="categories">
+            <ul>
+
+                <li>
+                    <a asp-controller="ItemMenu"
+                       asp-action="ItemMenu">
+                        Item Menu
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Mesa"
+                       asp-action="Mesa">
+                        Mesa
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Pedido"
+                       asp-action="Pedido">
+                        Pedido
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
+
+<script>
+    // Example Menu
+
+    var menu = [
+        {
+            item: "Spaghetti",
+            price: 9.50,
+            tax: true,
+            shortname: "Spag",
+            category: "entree",
+            glCode: "EN10",
+        },
+    ]
+</script>

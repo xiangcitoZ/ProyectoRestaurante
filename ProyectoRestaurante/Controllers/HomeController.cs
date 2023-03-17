@@ -20,16 +20,13 @@ namespace ProyectoRestaurante.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Index1()
-        {   
-            List <ItemMenu> items = this.repo.GetItemMenu();
+            List<ItemMenu> items = this.repo.GetItemMenu();
             List<Pedido> pedido = this.repopedido.GetPedidos();
             ViewData["PEDIDO"] = pedido;
             return View(items);
         }
+
+      
 
         public IActionResult Privacy()
         {
