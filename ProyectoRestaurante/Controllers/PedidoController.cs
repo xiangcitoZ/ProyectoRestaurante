@@ -18,6 +18,8 @@ namespace ProyectoRestaurante.Controllers
             List<Pedido> Pedidos = this.repo.GetPedidos();
             return View(Pedidos);
         }
+       
+      
 
         public IActionResult ListaPedido()
         {
