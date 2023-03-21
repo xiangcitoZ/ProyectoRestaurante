@@ -24,7 +24,7 @@
 
         .register .left .order-window {
             background: #2980b9;
-            height: 35vh;
+            height: 75vh;
             overflow-y: scroll;
             border: 0;
             padding: 0;

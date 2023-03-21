@@ -18,29 +18,13 @@
 <div class="register">
     <div class="left">
         <div class="order-window">
-            <table>
-
-                <tbody>
-                    <tr>
-                        <td>#</td>
-                        <td>Item</td>
-                        <td>Price</td>
-                        <td>GL</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Spaghetti</td>
-                        <td>$9.50</td>
-                        <td>EN</td>
-                    </tr>
-                    <div id="contenido"></div>
-                </tbody>
-            </table>
+            <div id="contenido"></div>
+            
         </div>
         <div class="order-total">
             <span>$38.00</span>
         </div>
-        <div class="buttons">
+        @*<div class="buttons">
 
             <button>
                 <i class="fas fa-print"></i>
@@ -70,7 +54,7 @@
             <div></div>
             <button>0</button>
             <button>.00</button>
-        </div>
+        </div>*@
     </div>
     <div class="right">
         <div class="categories">
@@ -89,8 +73,11 @@
                 {
 
                     <li>
-                        <a asp-controller="ItemMenu"
-                       asp-action="ItemMenu">
+                       <a asp-controller="Pedido"
+                       asp-action="Create"
+                       asp-route-IdMenu="@item.IdMenu"
+                       asp-route-ItemsMenu="@item.Nombre"
+                       asp-route-Total="@item.Precio">
                         <img width:"50px" height:"50px" src="@item.Imagen">
                        @item.Nombre - @item.Precio €
                         </a>

@@ -56,6 +56,13 @@ namespace ProyectoRestaurante.Repository
             await this.context.SaveChangesAsync();
         }
 
+        decimal total = 0;
+        public decimal SumaPrecio(decimal precio)
+        {
+            total =+precio;
+            return total;
+            
+        }
 
         public async Task UpdatePedidoAsync
               (int idpedido, decimal total, DateTime fecha, string itemsMenu,
