@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ProyectoRestaurante.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Pedido";
+    decimal total = 0;
+}
+
+<hr/>
+
+<h3>Pedidos</h3>
+
+<table  class="table">
+    <thead align="center">
+        <tr >
+            <th>
+               Id
+            </th>
+            <th>
+                Nombre
+            </th>
+           
+            <th>
+                Precio
+            </th>
+        
+        </tr>
+    </thead>
+    <tbody align="center">
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdMenu)
+                </td>
+                
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemsMenu)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+
+                @{
+                    total = total + item.Total;
+                }
+
+
+               
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<h1>TOTAL: @total€</h1>

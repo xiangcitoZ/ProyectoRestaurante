@@ -66,13 +66,6 @@
                         background-color: #eeeeee;
                     }
 
-                    .register .left .order-window table tr:first-child {
-                        font-weight: bold;
-                        background-color: #2980b9;
-                        color: white;
-                        position: sticky;
-                        top: 0px;
-                    }
 
         .register .left .order-total {
             background: white;

@@ -19,6 +19,11 @@ namespace ProyectoRestaurante.Controllers
             return View(Pedidos);
         }
 
+        public IActionResult ListaPedido()
+        {
+            List<Pedido> Pedidos = this.repo.GetPedidos();
+            return View(Pedidos);
+        }
         //public IActionResult ItemPedidos(int idmenu)
         //{
         //    List<ItemMenu> ItemPedidos = this.repo.GetItemMenuPedidos(idmenu);
@@ -41,8 +46,10 @@ namespace ProyectoRestaurante.Controllers
                 (pedido.IdPedido, pedido.Total, DateTime.Now,
                 pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu);
             
-            return RedirectToAction("Pedido");
+            return RedirectToAction("Index","Home");
         }
+
+       
 
         public IActionResult Edit(int idpedido)
         {

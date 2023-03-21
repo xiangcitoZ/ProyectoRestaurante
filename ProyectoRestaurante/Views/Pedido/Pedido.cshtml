@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Pedido";
+    decimal total = 0;
 }
 
 <h1>Pedido</h1>
@@ -41,6 +42,7 @@
         </tr>
     </thead>
     <tbody>
+        
 @foreach (var item in Model) {
         <tr>
             <td>
@@ -61,6 +63,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IdMenu)
             </td>
+                @{
+                    total = total + item.Total;
+                }
+
+        
             <td>
                     <a asp-controller="Pedido"
                    asp-action="Edit"
@@ -75,12 +82,14 @@
                        class="btn btn-outline-warning">
                         Eliminar
                     </a>
-
-                  
+                   
 
 
             </td>
         </tr>
 }
     </tbody>
+    
 </table>
+
+<h1>TOTAL: @total€</h1>
