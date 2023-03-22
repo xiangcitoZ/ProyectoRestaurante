@@ -22,7 +22,10 @@
             <th>
                 Precio
             </th>
-        
+
+            <th>
+                
+            </th>
         </tr>
     </thead>
     <tbody align="center">
@@ -47,7 +50,14 @@
                 @{
                     total = total + item.Total;
                 }
-
+                <td>
+                    <a asp-controller="Pedido"
+                   asp-action="Delete"
+                   asp-route-idpedido="@item.IdPedido"
+                       class="btn btn-outline-warning">
+                        Eliminar
+                    </a>
+                </td>
 
                
             </tr>

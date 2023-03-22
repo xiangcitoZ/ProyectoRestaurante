@@ -11,6 +11,17 @@
 
             $("#contenido").load("/Pedido/ListaPedido");
 
+            $("#displaybtn").click(function () {
+                
+                    if ($("#btn_hidden").css("display") == "none"){
+                        $("#btn_hidden").css("display", "inline-block");
+                    } else {
+                        $("#btn_hidden").css("display", "none");
+                    }
+
+                //    $("#btn_hidden").css("display", "none");
+            })
+
         })
     </script>
  }
@@ -41,7 +52,9 @@
                         <th>
                             Precio
                         </th>
+                        <th>
 
+                        </th>
                     </tr>
                 </thead>
                 <tbody align="center">
@@ -66,7 +79,16 @@
                             @{
                                 total = total + item.Total;
                             }
-
+                            <td id="btn_hidden">
+                                <a asp-controller="Pedido"
+                               asp-action="Delete"
+                               asp-route-idpedido="@item.IdPedido"
+                                   class="btn btn-outline-warning"
+                                  
+                                >
+                                    Eliminar
+                                </a>
+                            </td>
 
 
                         </tr>
@@ -78,6 +100,7 @@
 
             
         </div>
+        <button class="btn btn-outline-dark" id="displaybtn">Editar</button>
         <div class="order-total">
             <span>TOTAL: @total€</span>
         </div>
@@ -183,4 +206,18 @@
             glCode: "EN10",
         },
     ]
+
+
+    $(document).ready(function() {
+        $("#displaybtn").click(function () {
+            alert("Fue presionado.");
+        //    if ($("#btn_hidden").css("display") == "none"){
+        //        $("#btn_hidden").css("display", "inline-block");
+        //    } else {
+        //        $("#btn_hidden").css("display", "none");
+        //    }
+
+        //    $("#btn_hidden").css("display", "none");
+        })
+    })
 </script>
