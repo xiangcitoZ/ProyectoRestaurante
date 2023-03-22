@@ -13,10 +13,10 @@
 
             $("#displaybtn").click(function () {
                 
-                    if ($("#btn_hidden").css("display") == "none"){
-                        $("#btn_hidden").css("display", "inline-block");
+                    if ($(".btn_hidden").css("display") == "none"){
+                        $(".btn_hidden").css("display", "inline-block");
                     } else {
-                        $("#btn_hidden").css("display", "none");
+                        $(".btn_hidden").css("display", "none");
                     }
 
                 //    $("#btn_hidden").css("display", "none");
@@ -79,13 +79,11 @@
                             @{
                                 total = total + item.Total;
                             }
-                            <td id="btn_hidden">
+                            <td class="btn_hidden">
                                 <a asp-controller="Pedido"
                                asp-action="Delete"
                                asp-route-idpedido="@item.IdPedido"
-                                   class="btn btn-outline-warning"
-                                  
-                                >
+                               class="btn btn-outline-warning ">
                                     Eliminar
                                 </a>
                             </td>
