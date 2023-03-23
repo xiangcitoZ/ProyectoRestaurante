@@ -7,6 +7,96 @@
     font-family: "Roboto", sans-serif;
 }
 
+.registermesa {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 100vh;
+    width: 300%;
+    font-family: "Roboto", sans-serif;
+}
+
+    .registermesa .right {
+        background-color: #2980b9;
+        position: relative;
+        z-index: 5;
+    }
+
+        .registermesa .right .categories {
+            display: flex;
+        }
+
+            .registermesa .right .categories ul {
+                flex: 1;
+                display: flex;
+                margin: 0;
+                padding: 0;
+                height: 10vh;
+                list-style-type: none;
+            }
+
+                .registermesa .right .categories ul li {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                    .registermesa .right .categories ul li a {
+                        background: #236c9c;
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 10vh;
+                        color: white;
+                        text-decoration: none;
+                    }
+
+                    .registermesa .right .categories ul li :hover {
+                        background: #2980b9;
+                    }
+
+        .registermesa .right .menu-items {
+            height: 80vh;
+        }
+
+            .registermesa .right .menu-items ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                height: 80vh;
+                overflow-y: scroll;
+            }
+
+                .registermesa .right .menu-items ul li {
+                    height: 20vh;
+                    background: #eeeeee;
+                    margin: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 2px;
+                }
+
+                    .registermesa .right .menu-items ul li i {
+                        background: #236c9c;
+                    }
+
+                    .registermesa .right .menu-items ul li .item {
+                        font-weight: bold;
+                    }
+
+                    .registermesa .right .menu-items ul li .category {
+                        font-style: oblique;
+                    }
+
+                .registermesa .right .menu-items ul :hover {
+                    background: #d5d5d5;
+                }
+
 
 .register {
     display: grid;

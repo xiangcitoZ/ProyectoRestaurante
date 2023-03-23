@@ -79,3 +79,25 @@
 }
     </tbody>
 </table>
+<div class="registermesa">
+<div class="right">
+<div class="menu-items">
+    <ul>
+        @foreach (var item in Model)
+        {
+
+            <li>
+                <a asp-controller="Pedido"
+               asp-action="Create"
+               >
+                    <img width:"50px" height:"50px" src="">
+                    @item.IdMesa - @item.Cantidad €
+                </a>
+            </li>
+
+        }
+    </ul>
+
+</div>
+    </div>
+</div>
