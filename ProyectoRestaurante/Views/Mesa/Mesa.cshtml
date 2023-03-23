@@ -87,11 +87,13 @@
         {
 
             <li>
-                <a asp-controller="Pedido"
-               asp-action="Create"
-               >
+                <a asp-controller="Home"
+                     asp-action="Index"
+                     asp-route-IdMesa="@item.IdMesa">
                     <img width:"50px" height:"50px" src="">
-                    @item.IdMesa - @item.Cantidad €
+                    Mesa : @item.IdMesa 
+                    <br/>
+                    Cantidad : @item.Cantidad 
                 </a>
             </li>
 
