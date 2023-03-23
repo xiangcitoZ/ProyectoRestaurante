@@ -81,21 +81,7 @@
                     border-radius: 2px;
                 }
 
-                    .registermesa .right .menu-items ul li i {
-                        background: #236c9c;
-                    }
-
-                    .registermesa .right .menu-items ul li .item {
-                        font-weight: bold;
-                    }
-
-                    .registermesa .right .menu-items ul li .category {
-                        font-style: oblique;
-                    }
-
-                .registermesa .right .menu-items ul :hover {
-                    background: #d5d5d5;
-                }
+                   
 
 
 .register {
