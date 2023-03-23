@@ -12,11 +12,11 @@
             $("#contenido").load("/Pedido/ListaPedido");
 
             $("#displaybtn").click(function () {
-                
-                    if ($(".btn_hidden").css("display") == "none"){
-                        $(".btn_hidden").css("display", "inline-block");
+
+                if ($(".btn_hidden").css("display") == "none") {
+                    $(".btn_hidden").css("display", "inline-block");
                     } else {
-                        $(".btn_hidden").css("display", "none");
+                    $(".btn_hidden").css("display", "none");
                     }
 
                 //    $("#btn_hidden").css("display", "none");
@@ -37,7 +37,7 @@
 
             <hr />
 
-            <h3>Pedidos</h3>
+            <h3>Mesa: @ViewData["IDMESA"]</h3>
 
             <table class="table">
                 <thead align="center">
@@ -79,11 +79,11 @@
                             @{
                                 total = total + item.Total;
                             }
-                            <td class="btn_hidden">
+                            <td style="display:none" class="btn_hidden">
                                 <a asp-controller="Pedido"
                                asp-action="Delete"
                                asp-route-idpedido="@item.IdPedido"
-                               class="btn btn-outline-warning ">
+                               class="btn btn-danger ">
                                     Eliminar
                                 </a>
                             </td>
@@ -98,7 +98,7 @@
 
             
         </div>
-        <button class="btn btn-outline-dark" id="displaybtn">Editar</button>
+        <button class="btn btn-outline-danger" id="displaybtn">Editar</button>
         <div class="order-total">
             <span>TOTAL: @total€</span>
         </div>
@@ -155,7 +155,9 @@
                        asp-action="Create"
                        asp-route-IdMenu="@item.IdMenu"
                        asp-route-ItemsMenu="@item.Nombre"
-                       asp-route-Total="@item.Precio">
+                       asp-route-Total="@item.Precio"
+                       asp-route-IdMesa="@ViewData["IDMESA"]"
+                       >
                         <img width:"50px" height:"50px" src="@item.Imagen">
                        @item.Nombre - @item.Precio €
                         </a>
@@ -191,31 +193,3 @@
     </div>
 </div>
 
-<script>
-    // Example Menu
-
-    var menu = [
-        {
-            item: "Spaghetti",
-            price: 9.50,
-            tax: true,
-            shortname: "Spag",
-            category: "entree",
-            glCode: "EN10",
-        },
-    ]
-
-
-    $(document).ready(function() {
-        $("#displaybtn").click(function () {
-            alert("Fue presionado.");
-        //    if ($("#btn_hidden").css("display") == "none"){
-        //        $("#btn_hidden").css("display", "inline-block");
-        //    } else {
-        //        $("#btn_hidden").css("display", "none");
-        //    }
-
-        //    $("#btn_hidden").css("display", "none");
-        })
-    })
-</script>

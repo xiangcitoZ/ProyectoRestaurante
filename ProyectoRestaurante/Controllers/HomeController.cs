@@ -19,11 +19,11 @@ namespace ProyectoRestaurante.Controllers
             this.repopedido = repopedido;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int idmesa)
         {DatosMenuPedidos datos = new DatosMenuPedidos();
             datos.Items = this.repo.GetItemMenu();
             datos.Pedidos = this.repopedido.GetPedidos();
-           
+            ViewData["IDMESA"] = idmesa;
             ViewData["PEDIDO"] = datos.Pedidos;
             return View(datos);
         }

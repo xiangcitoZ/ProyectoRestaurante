@@ -43,7 +43,7 @@ namespace ProyectoRestaurante.Repository
             menu.Descripcion = descripcion;
             menu.Imagen = imagen;
             menu.Precio = precio;
-      
+           
 
             this.context.ItemMenu.Add(menu);
 
@@ -62,6 +62,7 @@ namespace ProyectoRestaurante.Repository
             menu.Descripcion = descripcion;
             menu.Imagen = imagen;
             menu.Precio = precio;
+            
 
             await this.context.SaveChangesAsync();
         }

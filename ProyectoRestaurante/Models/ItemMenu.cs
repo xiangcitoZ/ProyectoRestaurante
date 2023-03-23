@@ -17,7 +17,7 @@ namespace ProyectoRestaurante.Models
         public string Imagen { get; set; }
         [Column("Precio")]
         public decimal Precio { get; set; }
-
+       
 
     }
 }

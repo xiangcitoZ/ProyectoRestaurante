@@ -32,12 +32,12 @@ namespace ProyectoRestaurante.Controllers
         //    return View(ItemPedidos);
         //}
 
-        public IActionResult Create(int IdMenu, string ItemsMenu, decimal Total)
+        public IActionResult Create(int IdMenu, string ItemsMenu, decimal Total, int idmesa)
         {
             ViewData["IDMENU"] = IdMenu;
             ViewData["ITEMSMENU"] = ItemsMenu;
             ViewData["TOTAL"] = Total;
-            
+            ViewData["IDMESA"] = idmesa;
             return View();
         }
 
@@ -65,13 +65,13 @@ namespace ProyectoRestaurante.Controllers
             await this.repo.UpdatePedidoAsync
                 (pedido.IdPedido, pedido.Total, pedido.Fecha,
                 pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu);
-            return RedirectToAction("Pedido");
+            return RedirectToAction("Index", "Home");
         }
 
         public async Task<IActionResult> Delete(int idpedido)
         {
             await this.repo.DeletePedidoAsync(idpedido);
-            return RedirectToAction("Pedido");
+            return RedirectToAction("Index", "Home");
         }
 
 
