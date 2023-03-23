@@ -10,8 +10,7 @@ string connectionString =
     builder.Configuration.GetConnectionString("SqlComanda");
 
 builder.Services.AddTransient<RepositoryMenu>();
-builder.Services.AddTransient<RepositoryPedido>();
-builder.Services.AddTransient<RepositoryMesa>();
+
 
 builder.Services.AddDbContext<RestauranteContext>
     (options => options.UseSqlServer(connectionString));

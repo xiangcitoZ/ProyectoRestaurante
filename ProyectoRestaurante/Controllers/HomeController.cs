@@ -8,27 +8,51 @@ namespace ProyectoRestaurante.Controllers
     public class HomeController : Controller
     {
         private RepositoryMenu repo;
-        private RepositoryPedido repopedido;
+        
         
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, RepositoryMenu repo, RepositoryPedido repopedido)
+        public HomeController(ILogger<HomeController> logger, RepositoryMenu repo)
         {
             _logger = logger;
             this.repo = repo;
-            this.repopedido = repopedido;
+           
         }
 
         public IActionResult Index(int idmesa)
         {DatosMenuPedidos datos = new DatosMenuPedidos();
             datos.Items = this.repo.GetItemMenu();
-            datos.Pedidos = this.repopedido.GetPedidos();
+            datos.Pedidos = this.repo.GetPedidos();
             ViewData["IDMESA"] = idmesa;
             ViewData["PEDIDO"] = datos.Pedidos;
+
+
+
+
+
             return View(datos);
         }
 
-      
+
+        //public IActionResult Create(int IdMenu, string ItemsMenu, decimal Total, int idmesa)
+        //{
+        //    ViewData["IDMENU"] = IdMenu;
+        //    ViewData["ITEMSMENU"] = ItemsMenu;
+        //    ViewData["TOTAL"] = Total;
+        //    ViewData["IDMESA"] = idmesa;
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> Create(Pedido pedido)
+        //{
+        //    await this.repo.InsertPedidoAsync
+        //        (pedido.IdPedido, pedido.Total, DateTime.Now,
+        //        pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu);
+
+        //    return RedirectToAction("Index", "Home");
+        //}
+
 
         public IActionResult Privacy()
         {

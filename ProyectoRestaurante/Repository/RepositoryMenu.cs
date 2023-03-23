@@ -13,6 +13,8 @@ namespace ProyectoRestaurante.Repository
 
         }
 
+        //MENU
+
         public List<ItemMenu> GetItemMenu()
         {
             var consulta = from datos in this.context.ItemMenu
@@ -77,5 +79,142 @@ namespace ProyectoRestaurante.Repository
             await this.context.SaveChangesAsync();
         }
 
+
+        //PEDIDO
+
+        public List<Pedido> GetPedidos()
+        {
+            var consulta = from datos in this.context.Pedido
+                           select datos;
+            return consulta.ToList();
+        }
+
+        public Pedido FindPedido(int idpedido)
+        {
+            var consulta = from datos in this.context.Pedido
+                           where datos.IdPedido == idpedido
+                           select datos;
+            return consulta.FirstOrDefault();
+        }
+
+        //public List<ItemMenu> GetItemMenuPedidos(int idmenu)
+        //{
+        //    var consulta = from datos in this.context.ItemMenu
+        //                   where datos.IdMenu == idmenu
+        //                   select datos;
+        //    return consulta.ToList();
+        //}
+
+
+        public async Task InsertPedidoAsync
+         (int idpedido, decimal total, DateTime fecha, string itemsMenu,
+            int idmesa, int idmenu)
+        {
+
+            Pedido pedido = new Pedido();
+
+            pedido.IdPedido = idpedido;
+            pedido.Total = total;
+            pedido.Fecha = fecha;
+            pedido.ItemsMenu = itemsMenu;
+            pedido.IdMesa = idmesa;
+            pedido.IdMenu = idmenu;
+
+            this.context.Pedido.Add(pedido);
+
+            await this.context.SaveChangesAsync();
+        }
+
+        decimal total = 0;
+        public decimal SumaPrecio(decimal precio)
+        {
+            total = +precio;
+            return total;
+
+        }
+
+        public async Task UpdatePedidoAsync
+              (int idpedido, decimal total, DateTime fecha, string itemsMenu,
+                 int idmesa, int idmenu)
+        {
+
+            Pedido pedido = this.FindPedido(idpedido);
+
+            pedido.Total = total;
+            pedido.Fecha = fecha;
+            pedido.ItemsMenu = itemsMenu;
+            pedido.IdMesa = idmesa;
+            pedido.IdMenu = idmenu;
+
+            await this.context.SaveChangesAsync();
+        }
+
+
+        public async Task DeletePedidoAsync(int idpedido)
+        {
+            Pedido pedido = this.FindPedido(idpedido);
+
+            this.context.Pedido.Remove(pedido);
+
+            await this.context.SaveChangesAsync();
+        }
+
+
+        //MESA
+        public List<Mesa> GetMesas()
+        {
+            var consulta = from datos in this.context.Mesa
+                           select datos;
+            return consulta.ToList();
+        }
+
+        public Mesa FindMesa(int idmesa)
+        {
+            var consulta = from datos in this.context.Mesa
+                           where datos.IdMesa == idmesa
+                           select datos;
+            return consulta.FirstOrDefault();
+        }
+
+        public async Task InsertMesaAsync
+         (string estado, int numero, int cantidad)
+        {
+            //INSTANCIAR EL MODELO
+            Mesa mesa = new Mesa();
+            //ASIGNAMOS PROPIEDADES
+
+            mesa.Estado = estado;
+            mesa.Numero = numero;
+            mesa.Cantidad = cantidad;
+            //AÑADIMOS EL MODEL A LA COLECCION CONTEXT
+            this.context.Mesa.Add(mesa);
+            //GUARDAMOS CAMBIOS EN LA BASE DE DATOS
+            await this.context.SaveChangesAsync();
+        }
+
+
+        public async Task UpdateMesaAsync
+             (int idmesa, string estado, int numero, int cantidad)
+        {
+
+            Mesa mesa = this.FindMesa(idmesa);
+
+            mesa.Estado = estado;
+            mesa.Numero = numero;
+            mesa.Cantidad = cantidad;
+
+            await this.context.SaveChangesAsync();
+        }
+
+
+        public async Task DeleteMesaAsync(int idmesa)
+        {
+
+            Mesa mesa = this.FindMesa(idmesa);
+
+            this.context.Mesa.Remove(mesa);
+
+            await this.context.SaveChangesAsync();
+        }
     }
 }

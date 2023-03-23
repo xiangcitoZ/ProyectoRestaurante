@@ -6,9 +6,9 @@ namespace ProyectoRestaurante.Controllers
 {
     public class PedidoController : Controller
     {
-        private RepositoryPedido repo;
+        private RepositoryMenu repo;
 
-        public PedidoController(RepositoryPedido repo)
+        public PedidoController(RepositoryMenu repo)
         {
             this.repo = repo;
         }

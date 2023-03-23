@@ -172,7 +172,8 @@
 
                 <li>
                     <a asp-controller="ItemMenu"
-                       asp-action="ItemMenu">
+                       asp-action="ItemMenu"
+                       asp-route-IdMesa="@ViewData["IDMESA"]">
                         Item Menu
                     </a>
                 </li>
@@ -184,7 +185,8 @@
                 </li>
                 <li>
                     <a asp-controller="Pedido"
-                       asp-action="Pedido">
+                       asp-action="Pedido"
+                       asp-route-IdMesa="@ViewData["IDMESA"]">
                         Pedido
                     </a>
                 </li>

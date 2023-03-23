@@ -6,9 +6,9 @@ namespace ProyectoRestaurante.Controllers
 {
     public class MesaController : Controller
     {
-        private RepositoryMesa repo;
+        private RepositoryMenu repo;
 
-        public MesaController(RepositoryMesa repo)
+        public MesaController(RepositoryMenu repo)
         {
             this.repo = repo;
         }
