@@ -7,6 +7,7 @@
 
 @section Scripts {
     <script>
+       
         $(document).ready(function () {
 
             $("#contenido").load("/Pedido/ListaPedido");
@@ -21,6 +22,7 @@
 
                 //    $("#btn_hidden").css("display", "none");
             })
+
 
         })
     </script>
@@ -42,15 +44,16 @@
             <table class="table">
                 <thead align="center">
                     <tr>
-                        <th>
-                            Id
-                        </th>
+                       
                         <th>
                             Nombre
                         </th>
 
                         <th>
                             Precio
+                        </th>
+                        <th>
+                            Cantidad
                         </th>
                         <th>
 
@@ -63,9 +66,7 @@
                     @foreach (var item in Model.Pedidos)
                     {
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdMenu)
-                            </td>
+                           
 
 
                             <td>
@@ -79,6 +80,9 @@
                             @{
                                 total = total + item.Total;
                             }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cantidad)
+                            </td>
                             <td style="display:none" class="btn_hidden">
                                 <a asp-controller="Pedido"
                                asp-action="Delete"
@@ -138,12 +142,13 @@
     <div class="right">
         <div class="categories">
             <ul>
-                <li><a href="#">Todo</a></li>
-                <li><a href="#">Entrantes</a></li>
-                <li><a href="#">Principal</a></li>
-                <li><a href="#">Segundo</a></li>
-                <li><a href="#">Bebibas</a></li>
-                <li><a href="#">Postre</a></li>
+                <li><a href="#">TODO</a></li>
+                <li><a href="#">SOPAS</a></li>
+                <li><a href="#">ARROZ Y TALLARINES</a></li>
+                <li><a href="#">GAMBAS Y MARISCOS</a></li>
+                <li><a href="#">TERNERA Y POLLO</a></li>
+                <li><a href="#">POSTRE</a></li>
+                <li><a href="#">BEBIDAS</a></li>
             </ul>
         </div>
         <div class="menu-items">

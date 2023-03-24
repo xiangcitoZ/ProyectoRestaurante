@@ -12,8 +12,7 @@ namespace ProyectoRestaurante.Models
             public int IdMesa { get; set; }
             [Column("Estado")]
             public string Estado { get; set; }
-            [Column("Numero")]
-            public int Numero { get; set; }
+           
             [Column("Cantidad")]
             public int Cantidad { get; set; }
            

@@ -38,6 +38,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdMenu)
             </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cantidad)
+                </th>
             <th></th>
         </tr>
     </thead>
@@ -66,7 +69,9 @@
                 @{
                     total = total + item.Total;
                 }
-
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
         
             <td>
                     <a asp-controller="Pedido"

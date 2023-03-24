@@ -32,7 +32,7 @@ namespace ProyectoRestaurante.Controllers
         //    return View(ItemPedidos);
         //}
 
-        public IActionResult Create(int IdMenu, string ItemsMenu, decimal Total, int idmesa)
+        public IActionResult Create(int IdMenu, string ItemsMenu, string Total, int idmesa)
         {
             ViewData["IDMENU"] = IdMenu;
             ViewData["ITEMSMENU"] = ItemsMenu;
@@ -46,7 +46,7 @@ namespace ProyectoRestaurante.Controllers
         {
             await this.repo.InsertPedidoAsync
                 (pedido.IdPedido, pedido.Total, DateTime.Now,
-                pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu);
+                pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu, pedido.Cantidad);
             
             return RedirectToAction("Index","Home");
         }
@@ -64,7 +64,7 @@ namespace ProyectoRestaurante.Controllers
         {
             await this.repo.UpdatePedidoAsync
                 (pedido.IdPedido, pedido.Total, pedido.Fecha,
-                pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu);
+                pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu, pedido.Cantidad);
             return RedirectToAction("Index", "Home");
         }
 

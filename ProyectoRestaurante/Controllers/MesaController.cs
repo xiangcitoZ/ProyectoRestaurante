@@ -28,7 +28,7 @@ namespace ProyectoRestaurante.Controllers
         public async Task<IActionResult> Create(Mesa mesa)
         {
             await this.repo.InsertMesaAsync
-                ( mesa.Estado, mesa.Numero
+                ( mesa.Estado
                 , mesa.Cantidad);
             return RedirectToAction("Mesa");
         }
@@ -43,7 +43,7 @@ namespace ProyectoRestaurante.Controllers
         public async Task<IActionResult> Edit(Mesa mesa)
         {
             await this.repo.UpdateMesaAsync
-                (mesa.IdMesa, mesa.Estado, mesa.Numero
+                (mesa.IdMesa, mesa.Estado
                 , mesa.Cantidad);
             return RedirectToAction("Mesa");
         }

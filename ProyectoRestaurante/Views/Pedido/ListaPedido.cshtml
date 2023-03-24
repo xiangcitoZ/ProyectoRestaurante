@@ -22,7 +22,9 @@
             <th>
                 Precio
             </th>
-
+            <th>
+                Cantidad
+            </th>
             <th>
                 
             </th>
@@ -50,6 +52,10 @@
                 @{
                     total = total + item.Total;
                 }
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
                 <td>
                     <a asp-controller="Pedido"
                    asp-action="Delete"

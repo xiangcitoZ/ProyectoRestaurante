@@ -28,9 +28,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Numero)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Cantidad)
             </th>
@@ -46,9 +44,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Numero)
-            </td>
+         
             <td>
                 @Html.DisplayFor(modelItem => item.Cantidad)
             </td>
@@ -86,16 +82,17 @@
         @foreach (var item in Model)
         {
 
-            <li>
+                 
                 <a asp-controller="Home"
                      asp-action="Index"
                      asp-route-IdMesa="@item.IdMesa">
-                    <img width:"50px" height:"50px" src="">
-                    Mesa : @item.IdMesa 
-                    <br/>
-                    Cantidad : @item.Cantidad 
+                    <li>
+                            <h1 style="color:#06a159">Mesa : @item.IdMesa </h1>
+                            <br/>
+                    Cantidad : @item.Cantidad
+                    </li>
                 </a>
-            </li>
+          
 
         }
     </ul>

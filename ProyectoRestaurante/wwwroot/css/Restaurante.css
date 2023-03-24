@@ -71,8 +71,12 @@
             }
 
                 .registermesa .right .menu-items ul li {
-                    height: 20vh;
+                    height: 38vh;
                     background: #eeeeee;
+                    background-image: url(../../images/mesa.jpg);
+                    background-position-x: center;
+                    background-position-y: bottom;
+                    background-size: cover;
                     margin: 5px;
                     display: flex;
                     flex-direction: column;

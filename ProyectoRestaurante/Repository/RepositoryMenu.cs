@@ -108,7 +108,7 @@ namespace ProyectoRestaurante.Repository
 
         public async Task InsertPedidoAsync
          (int idpedido, decimal total, DateTime fecha, string itemsMenu,
-            int idmesa, int idmenu)
+            int idmesa, int idmenu, int cantidad)
         {
 
             Pedido pedido = new Pedido();
@@ -119,7 +119,7 @@ namespace ProyectoRestaurante.Repository
             pedido.ItemsMenu = itemsMenu;
             pedido.IdMesa = idmesa;
             pedido.IdMenu = idmenu;
-
+            pedido.Cantidad = cantidad;
             this.context.Pedido.Add(pedido);
 
             await this.context.SaveChangesAsync();
@@ -135,7 +135,7 @@ namespace ProyectoRestaurante.Repository
 
         public async Task UpdatePedidoAsync
               (int idpedido, decimal total, DateTime fecha, string itemsMenu,
-                 int idmesa, int idmenu)
+                 int idmesa, int idmenu, int cantidad)
         {
 
             Pedido pedido = this.FindPedido(idpedido);
@@ -145,6 +145,7 @@ namespace ProyectoRestaurante.Repository
             pedido.ItemsMenu = itemsMenu;
             pedido.IdMesa = idmesa;
             pedido.IdMenu = idmenu;
+            pedido.Cantidad = cantidad;
 
             await this.context.SaveChangesAsync();
         }
@@ -177,14 +178,14 @@ namespace ProyectoRestaurante.Repository
         }
 
         public async Task InsertMesaAsync
-         (string estado, int numero, int cantidad)
+         (string estado, int cantidad)
         {
             //INSTANCIAR EL MODELO
             Mesa mesa = new Mesa();
             //ASIGNAMOS PROPIEDADES
 
             mesa.Estado = estado;
-            mesa.Numero = numero;
+           
             mesa.Cantidad = cantidad;
             //AÑADIMOS EL MODEL A LA COLECCION CONTEXT
             this.context.Mesa.Add(mesa);
@@ -194,13 +195,13 @@ namespace ProyectoRestaurante.Repository
 
 
         public async Task UpdateMesaAsync
-             (int idmesa, string estado, int numero, int cantidad)
+             (int idmesa, string estado, int cantidad)
         {
 
             Mesa mesa = this.FindMesa(idmesa);
 
             mesa.Estado = estado;
-            mesa.Numero = numero;
+           
             mesa.Cantidad = cantidad;
 
             await this.context.SaveChangesAsync();

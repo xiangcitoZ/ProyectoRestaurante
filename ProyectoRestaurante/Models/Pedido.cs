@@ -21,6 +21,8 @@ namespace ProyectoRestaurante.Models
             public int IdMesa { get; set; }
             [Column("IdMenu")]
             public int IdMenu { get; set; }
+            [Column("Cantidad")]
+            public int Cantidad { get; set; }
 
 
     }
