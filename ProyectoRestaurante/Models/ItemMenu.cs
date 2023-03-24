@@ -11,8 +11,8 @@ namespace ProyectoRestaurante.Models
         public int IdMenu { get; set; }
         [Column("Nombre")]
         public string Nombre { get; set; }
-        [Column("Descripcion")]
-        public string Descripcion { get; set; }
+        [Column("Categoria")]
+        public string Categoria { get; set; }
         [Column("Imagen")]
         public string Imagen { get; set; }
         [Column("Precio")]

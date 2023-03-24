@@ -21,22 +21,14 @@ namespace ProyectoRestaurante.Controllers
        
       
 
-        public IActionResult ListaPedido()
-        {
-            List<Pedido> Pedidos = this.repo.GetPedidos();
-            return View(Pedidos);
-        }
-        //public IActionResult ItemPedidos(int idmenu)
-        //{
-        //    List<ItemMenu> ItemPedidos = this.repo.GetItemMenuPedidos(idmenu);
-        //    return View(ItemPedidos);
-        //}
+     
+    
 
-        public IActionResult Create(int IdMenu, string ItemsMenu, string Total, int idmesa)
+        public IActionResult Create(int IdMenu, string ItemsMenu, string precio, int idmesa)
         {
             ViewData["IDMENU"] = IdMenu;
             ViewData["ITEMSMENU"] = ItemsMenu;
-            ViewData["TOTAL"] = Total;
+            ViewData["PRECIO"] = precio;
             ViewData["IDMESA"] = idmesa;
             return View();
         }
@@ -45,10 +37,12 @@ namespace ProyectoRestaurante.Controllers
         public async Task<IActionResult> Create(Pedido pedido)
         {
             await this.repo.InsertPedidoAsync
-                (pedido.IdPedido, pedido.Total, DateTime.Now,
+                (pedido.IdPedido, pedido.Precio, DateTime.Now,
                 pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu, pedido.Cantidad);
             
-            return RedirectToAction("Index","Home");
+            return RedirectToAction
+                ("Index", "Home", new { IdMesa = pedido.IdMesa });
+            //return RedirectToAction("Index","Home");
         }
 
        
@@ -63,7 +57,7 @@ namespace ProyectoRestaurante.Controllers
         public async Task<IActionResult> Edit(Pedido pedido)
         {
             await this.repo.UpdatePedidoAsync
-                (pedido.IdPedido, pedido.Total, pedido.Fecha,
+                (pedido.IdPedido, pedido.Precio, pedido.Fecha,
                 pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu, pedido.Cantidad);
             return RedirectToAction("Index", "Home");
         }

@@ -56,6 +56,9 @@
                             Cantidad
                         </th>
                         <th>
+                            Total
+                        </th>
+                        <th>
 
                         </th>
                     </tr>
@@ -74,14 +77,20 @@
                             </td>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.Total)
+                                @Html.DisplayFor(modelItem => item.Precio)
                             </td>
 
                             @{
-                                total = total + item.Total;
+                                total = total + (item.Precio*item.Cantidad);
                             }
                             <td>
                                 @Html.DisplayFor(modelItem => item.Cantidad)
+                            </td>
+                            <td>
+                                @{
+                                    var precio = item.Cantidad * item.Precio;
+                                }
+                                @precio
                             </td>
                             <td style="display:none" class="btn_hidden">
                                 <a asp-controller="Pedido"
@@ -142,13 +151,56 @@
     <div class="right">
         <div class="categories">
             <ul>
-                <li><a href="#">TODO</a></li>
-                <li><a href="#">SOPAS</a></li>
-                <li><a href="#">ARROZ Y TALLARINES</a></li>
-                <li><a href="#">GAMBAS Y MARISCOS</a></li>
-                <li><a href="#">TERNERA Y POLLO</a></li>
-                <li><a href="#">POSTRE</a></li>
-                <li><a href="#">BEBIDAS</a></li>
+                <li>
+                    <a asp-controller="Home"
+                    asp-action="Index"
+                       asp-route-idmesa="@ViewData["IDMESA"]"
+                       asp-route-descripcion="Arroz">
+                    ARROZ
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       asp-route-idmesa="@ViewData["IDMESA"]"
+                       asp-route-descripcion="Sopa">
+                        SOPA
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       asp-route-idmesa="@ViewData["IDMESA"]"
+                       asp-route-descripcion="Marisco"
+                        >
+                        MARISCO
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       asp-route-idmesa="@ViewData["IDMESA"]"
+                       asp-route-descripcion="Carne">
+                        TERNERA Y POLLO
+                    </a>
+                </li>
+               
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       asp-route-idmesa="@ViewData["IDMESA"]"
+                       asp-route-descripcion="Postre">
+                        POSTRE
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       asp-route-idmesa="@ViewData["IDMESA"]"
+                       asp-route-descripcion="Bebida">
+                        BEBIDA
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="menu-items">
@@ -161,10 +213,10 @@
                        asp-action="Create"
                        asp-route-IdMenu="@item.IdMenu"
                        asp-route-ItemsMenu="@item.Nombre"
-                       asp-route-Total="@item.Precio"
+                       asp-route-precio="@item.Precio"
                        asp-route-IdMesa="@ViewData["IDMESA"]"
                        >
-                        <img width:"50px" height:"50px" src="@item.Imagen">
+                        <img width:"50px" height:"50px" src="~/images/@item.Imagen">
                        @item.Nombre - @item.Precio €
                         </a>
                     </li>

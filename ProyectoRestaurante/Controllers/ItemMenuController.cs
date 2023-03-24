@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoRestaurante.Data;
+using ProyectoRestaurante.Helpers;
 using ProyectoRestaurante.Models;
 using ProyectoRestaurante.Repository;
 
@@ -8,12 +9,16 @@ namespace ProyectoRestaurante.Controllers
     public class ItemMenuController : Controller
     {
         private RepositoryMenu repo;
+        private HelperPathProvider helperPath;
 
-        public ItemMenuController(RepositoryMenu repo)
+        public ItemMenuController(RepositoryMenu repo, 
+            HelperPathProvider helperPath)
         {
             this.repo = repo;
+            this.helperPath = helperPath;
         }
 
+       
         public IActionResult ItemMenu()
         {
             List<ItemMenu> itemMenus = this.repo.GetItemMenu();
@@ -27,11 +32,23 @@ namespace ProyectoRestaurante.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ItemMenu menu)
+        public async Task<IActionResult> Create(ItemMenu menu,
+            IFormFile fichero)
         {
+
+
+            string fileName = fichero.FileName;
+
+            string path = this.helperPath.MapPath(fileName, Folders.Images);
+            using (Stream stream = new FileStream(path, FileMode.Create))
+            {
+                await fichero.CopyToAsync(stream);
+            }
+            ViewData["MENSAJE"] = "Fichero subido a " + path;
+
             await this.repo.InsertItemMenuAsync
-                (menu.IdMenu, menu.Nombre, menu.Descripcion,
-                menu.Imagen, menu.Precio);
+                (menu.IdMenu, menu.Nombre, menu.Categoria,
+                fileName, menu.Precio);
             return RedirectToAction("ItemMenu");
         }
 
@@ -45,7 +62,7 @@ namespace ProyectoRestaurante.Controllers
         public async Task<IActionResult> Edit(ItemMenu menu)
         {
             await this.repo.UpdateItemMenuAsync
-               (menu.IdMenu, menu.Nombre, menu.Descripcion,
+               (menu.IdMenu, menu.Nombre, menu.Categoria,
                 menu.Imagen, menu.Precio);
             return RedirectToAction("ItemMenu");
         }

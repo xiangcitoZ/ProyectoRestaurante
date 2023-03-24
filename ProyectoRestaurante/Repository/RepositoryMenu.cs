@@ -22,6 +22,13 @@ namespace ProyectoRestaurante.Repository
             return consulta.ToList();
         }
 
+        public List<ItemMenu> GetItemMenuCategoria(string categoria)
+        {
+            var consulta = from datos in this.context.ItemMenu
+                           where datos.Categoria == categoria
+                           select datos;
+            return consulta.ToList();
+        }
 
         public ItemMenu FindItemMenu(int idmenu)
         {
@@ -34,7 +41,7 @@ namespace ProyectoRestaurante.Repository
        
 
         public async Task InsertItemMenuAsync
-         (int idmenu, string nombre, string descripcion, string imagen,
+         (int idmenu, string nombre, string categoria, string imagen,
             decimal precio)
         {
 
@@ -42,7 +49,7 @@ namespace ProyectoRestaurante.Repository
 
             menu.IdMenu = idmenu;
             menu.Nombre = nombre;
-            menu.Descripcion = descripcion;
+            menu.Categoria = categoria;
             menu.Imagen = imagen;
             menu.Precio = precio;
            
@@ -54,14 +61,14 @@ namespace ProyectoRestaurante.Repository
 
 
         public async Task UpdateItemMenuAsync
-             (int idmenu, string nombre, string descripcion, string imagen,
+             (int idmenu, string nombre, string categoria, string imagen,
                   decimal precio)
         {
 
             ItemMenu menu = this.FindItemMenu(idmenu);
 
             menu.Nombre = nombre;
-            menu.Descripcion = descripcion;
+            menu.Categoria = categoria;
             menu.Imagen = imagen;
             menu.Precio = precio;
             
@@ -89,6 +96,14 @@ namespace ProyectoRestaurante.Repository
             return consulta.ToList();
         }
 
+        public List<Pedido> GetPedidosMesa(int idmesa)
+        {
+            var consulta = from datos in this.context.Pedido
+                           where datos.IdMesa == idmesa
+                           select datos;
+            return consulta.ToList();
+        }
+
         public Pedido FindPedido(int idpedido)
         {
             var consulta = from datos in this.context.Pedido
@@ -107,14 +122,14 @@ namespace ProyectoRestaurante.Repository
 
 
         public async Task InsertPedidoAsync
-         (int idpedido, decimal total, DateTime fecha, string itemsMenu,
+         (int idpedido, decimal precio, DateTime fecha, string itemsMenu,
             int idmesa, int idmenu, int cantidad)
         {
 
             Pedido pedido = new Pedido();
 
             pedido.IdPedido = idpedido;
-            pedido.Total = total;
+            pedido.Precio = precio;
             pedido.Fecha = fecha;
             pedido.ItemsMenu = itemsMenu;
             pedido.IdMesa = idmesa;
@@ -134,13 +149,13 @@ namespace ProyectoRestaurante.Repository
         }
 
         public async Task UpdatePedidoAsync
-              (int idpedido, decimal total, DateTime fecha, string itemsMenu,
+              (int idpedido, decimal precio, DateTime fecha, string itemsMenu,
                  int idmesa, int idmenu, int cantidad)
         {
 
             Pedido pedido = this.FindPedido(idpedido);
 
-            pedido.Total = total;
+            pedido.Precio = precio;
             pedido.Fecha = fecha;
             pedido.ItemsMenu = itemsMenu;
             pedido.IdMesa = idmesa;

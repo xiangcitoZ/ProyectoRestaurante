@@ -24,7 +24,7 @@
                 @Html.DisplayNameFor(model => model.IdPedido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Total)
+                @Html.DisplayNameFor(model => model.Precio)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Fecha)
@@ -52,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.IdPedido)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Total)
+                @Html.DisplayFor(modelItem => item.Precio)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Fecha)
@@ -67,7 +67,7 @@
                 @Html.DisplayFor(modelItem => item.IdMenu)
             </td>
                 @{
-                    total = total + item.Total;
+                    total = total + item.Precio;
                 }
             <td>
                 @Html.DisplayFor(modelItem => item.Cantidad)
@@ -97,4 +97,3 @@
     
 </table>
 </div>
-<h1>TOTAL: @total€</h1>

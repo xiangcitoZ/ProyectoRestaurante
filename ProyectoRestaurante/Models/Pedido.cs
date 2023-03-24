@@ -11,8 +11,8 @@ namespace ProyectoRestaurante.Models
             [Column("IdPedido")]
             public int IdPedido { get; set; }
           
-            [Column("Total")]
-            public decimal Total { get; set; }
+            [Column("Precio")]
+            public decimal Precio { get; set; }
             [Column("Fecha")]
             public DateTime Fecha { get; set; }
             [Column("ItemsMenu")]

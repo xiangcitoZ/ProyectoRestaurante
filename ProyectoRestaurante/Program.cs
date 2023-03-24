@@ -2,9 +2,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NuGet.Configuration;
 using ProyectoRestaurante.Data;
+using ProyectoRestaurante.Helpers;
 using ProyectoRestaurante.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<HelperPathProvider>();
 
 string connectionString =
     builder.Configuration.GetConnectionString("SqlComanda");
@@ -16,8 +19,13 @@ builder.Services.AddDbContext<RestauranteContext>
     (options => options.UseSqlServer(connectionString));
 
 
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMemoryCache();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddResponseCaching();
 
 var app = builder.Build();
 
@@ -40,6 +48,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseResponseCaching();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Mesa}/{action=Mesa}/{id?}");
