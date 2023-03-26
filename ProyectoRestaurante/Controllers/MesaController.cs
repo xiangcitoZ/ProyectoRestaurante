@@ -19,6 +19,12 @@ namespace ProyectoRestaurante.Controllers
             return View(Mesas);
         }
 
+        public IActionResult ListaMesa()
+        {
+            List<Mesa> Mesas = this.repo.GetMesas();
+            return View(Mesas);
+        }
+
         public IActionResult Create()
         {
             return View();

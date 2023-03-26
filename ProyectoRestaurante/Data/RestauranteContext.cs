@@ -15,6 +15,8 @@ namespace ProyectoRestaurante.Data
 
         public DbSet<Mesa> Mesa { get; set; }
 
+      
+
        
     }
 }

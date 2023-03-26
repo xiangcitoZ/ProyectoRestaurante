@@ -20,8 +20,6 @@ namespace ProyectoRestaurante.Controllers
         }
        
       
-
-     
     
 
         public IActionResult Create(int IdMenu, string ItemsMenu, string precio, int idmesa)
@@ -40,10 +38,10 @@ namespace ProyectoRestaurante.Controllers
                 (pedido.IdPedido, pedido.Precio, DateTime.Now,
                 pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu, pedido.Cantidad);
 
-            await this.repo.FindEstadoMesa(pedido.IdMesa);
+            await this.repo.MesaOcupado(pedido.IdMesa);
             
             return RedirectToAction
-                ("Index", "Home", new { IdMesa = pedido.IdMesa });
+                ("Index", "Home", new { IdMesa = pedido.IdMesa , descripcion = "Arroz" });
             //return RedirectToAction("Index","Home");
         }
 
@@ -61,7 +59,7 @@ namespace ProyectoRestaurante.Controllers
             await this.repo.UpdatePedidoAsync
                 (pedido.IdPedido, pedido.Precio, pedido.Fecha,
                 pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu, pedido.Cantidad);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { IdMesa = pedido.IdMesa });
         }
 
         public async Task<IActionResult> Delete(int idpedido)

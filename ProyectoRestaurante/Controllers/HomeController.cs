@@ -23,18 +23,24 @@ namespace ProyectoRestaurante.Controllers
         {DatosMenuPedidos datos = new DatosMenuPedidos();
             datos.Items = this.repo.GetItemMenu();
             datos.Pedidos = this.repo.GetPedidosMesa(idmesa);
-            datos.Items = this.repo.GetItemMenuCategoria(descripcion);
-         
+            datos.Items = this.repo.GetItemMenuCategoria(descripcion);         
             datos.Mesas = this.repo.GetMesas();
+
             ViewData["IDMESA"] = idmesa;
             ViewData["PEDIDO"] = datos.Pedidos;
-          
-
-
 
 
             return View(datos);
         }
+
+        public async Task<IActionResult> PagarPedido(int idmesa)
+        {
+
+            await this.repo.MesaLibre(idmesa);
+            await this.repo.PagarPedido(idmesa);
+            return RedirectToAction("Index", "Home", new { idmesa = idmesa , descripcion = "Arroz"});
+        }
+
 
 
         //public IActionResult Create(int IdMenu, string ItemsMenu, decimal Total, int idmesa)

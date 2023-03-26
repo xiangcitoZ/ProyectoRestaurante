@@ -121,6 +121,12 @@
 
             
         </div>
+          <a asp-controller="Home"
+             asp-action="PagarPedido"
+             asp-route-idmesa="@ViewData["IDMESA"]"
+              class="btn btn-dark ">
+                                        PAGAR
+                                    </a>
         <button class="btn btn-outline-danger" id="displaybtn">Editar</button>
         <div class="order-total">
 

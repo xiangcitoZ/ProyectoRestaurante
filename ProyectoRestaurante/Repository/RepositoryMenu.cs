@@ -176,6 +176,27 @@ namespace ProyectoRestaurante.Repository
         }
 
 
+        public List<Pedido> BuscarPedidoPagar(int idmesa)
+        {
+            var consulta = from datos in this.context.Pedido
+                           where datos.IdMesa == idmesa
+                           select datos;
+            return consulta.ToList();
+        }
+
+        public async Task PagarPedido(int idmesa)
+        {
+            List<Pedido> pedidos = this.BuscarPedidoPagar(idmesa);
+
+            foreach (var pedido in pedidos)
+            {
+                this.context.Pedido.Remove(pedido);
+            }
+
+            await this.context.SaveChangesAsync();
+        }
+
+
         //MESA
         public List<Mesa> GetMesas()
         {
@@ -235,7 +256,7 @@ namespace ProyectoRestaurante.Repository
 
 
 
-        public async Task FindEstadoMesa(int idmesa)
+        public async Task MesaOcupado(int idmesa)
         {
             Mesa mesa = this.FindMesa(idmesa);
 
@@ -244,6 +265,14 @@ namespace ProyectoRestaurante.Repository
             await this.context.SaveChangesAsync();
         }
 
+        public async Task MesaLibre(int idmesa)
+        {
+            Mesa mesa = this.FindMesa(idmesa);
+
+            mesa.Estado = "Libre";
+
+            await this.context.SaveChangesAsync();
+        }
 
 
     }
