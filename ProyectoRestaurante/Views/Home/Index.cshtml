@@ -35,11 +35,12 @@
             @{
                 
                 decimal total = 0;
+               
             }
 
             <hr />
 
-            <h3>Mesa: @ViewData["IDMESA"]</h3>
+            <h3>Mesa: @ViewData["IDMESA"]   </h3>
 
             <table class="table">
                 <thead align="center">
@@ -65,44 +66,53 @@
                 </thead>
                 <tbody align="center">
 
-
-                    @foreach (var item in Model.Pedidos)
+                    
+                    @if(Model.Pedidos.Count == 0)
                     {
-                        <tr>
-                           
+                      
+
+                    }else{
 
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ItemsMenu)
-                            </td>
+                        @foreach (var item in Model.Pedidos)
+                        {
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Precio)
-                            </td>
+                            <tr>
 
-                            @{
-                                total = total + (item.Precio*item.Cantidad);
-                            }
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Cantidad)
-                            </td>
-                            <td>
+
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ItemsMenu)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Precio)
+                                </td>
+
                                 @{
-                                    var precio = item.Cantidad * item.Precio;
+                                    total = total + (item.Precio * item.Cantidad);
                                 }
-                                @precio
-                            </td>
-                            <td style="display:none" class="btn_hidden">
-                                <a asp-controller="Pedido"
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cantidad)
+                                </td>
+                                <td>
+                                    @{
+                                        var precio = item.Cantidad * item.Precio;
+                                    }
+                                    @precio
+                                </td>
+                                <td style="display:none" class="btn_hidden">
+                                    <a asp-controller="Pedido"
                                asp-action="Delete"
                                asp-route-idpedido="@item.IdPedido"
                                class="btn btn-danger ">
-                                    Eliminar
-                                </a>
-                            </td>
+                                        Eliminar
+                                    </a>
+                                </td>
 
 
-                        </tr>
+                            </tr>
+                        }
                     }
                 </tbody>
 

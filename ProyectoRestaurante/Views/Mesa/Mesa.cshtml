@@ -4,12 +4,35 @@
     ViewData["Title"] = "Mesa";
 }
 
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+
+            
+
+            $("#displaybtn").click(function () {
+
+                if ($(".btn_hidden").css("display") == "none") {
+                    $(".btn_hidden").css("display", "inline-block");
+                } else {
+                    $(".btn_hidden").css("display", "none");
+                }
+
+              
+            })
+
+
+        })
+    </script>
+ }
+
 <h1>Mesa</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
+<button class="btn btn-outline-danger" id="displaybtn">Editar</button>
 <hr />
 
 <a asp-controller="Home"
@@ -87,10 +110,29 @@
                      asp-action="Index"
                      asp-route-IdMesa="@item.IdMesa"
                      asp-route-descripcion="Arroz">
-                    <li>
+                    <li>    
+
+                            @if(item.Estado == "Libre")
+                            {
                             <h1 style="color:#06a159">Mesa : @item.IdMesa </h1>
+                           
+ 
+                            }else
+                            {
+                            <h1 style="color:red">Mesa : @item.IdMesa </h1>
+                           
+                            }
                             <br/>
+                         
                     Cantidad : @item.Cantidad
+
+                   
+                        <a style="display:none" class="btn_hidden" asp-controller="Mesa"
+                       asp-action="Delete"
+                       asp-route-idmesa="@item.IdMesa"
+                       class="btn btn-outline-warning">
+                            Eliminar
+                        </a>
                     </li>
                 </a>
           

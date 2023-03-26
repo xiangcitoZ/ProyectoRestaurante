@@ -19,14 +19,16 @@ namespace ProyectoRestaurante.Controllers
            
         }
 
-        public IActionResult Index(int idmesa, string descripcion)
+        public IActionResult Index(int idmesa, string descripcion, string estado)
         {DatosMenuPedidos datos = new DatosMenuPedidos();
             datos.Items = this.repo.GetItemMenu();
             datos.Pedidos = this.repo.GetPedidosMesa(idmesa);
             datos.Items = this.repo.GetItemMenuCategoria(descripcion);
+         
+            datos.Mesas = this.repo.GetMesas();
             ViewData["IDMESA"] = idmesa;
             ViewData["PEDIDO"] = datos.Pedidos;
-
+          
 
 
 

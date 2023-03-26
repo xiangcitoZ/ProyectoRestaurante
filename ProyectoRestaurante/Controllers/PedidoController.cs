@@ -39,6 +39,8 @@ namespace ProyectoRestaurante.Controllers
             await this.repo.InsertPedidoAsync
                 (pedido.IdPedido, pedido.Precio, DateTime.Now,
                 pedido.ItemsMenu, pedido.IdMesa, pedido.IdMenu, pedido.Cantidad);
+
+            await this.repo.FindEstadoMesa(pedido.IdMesa);
             
             return RedirectToAction
                 ("Index", "Home", new { IdMesa = pedido.IdMesa });

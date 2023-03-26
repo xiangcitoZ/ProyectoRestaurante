@@ -38,7 +38,7 @@ namespace ProyectoRestaurante.Repository
             return consulta.FirstOrDefault();
         }
 
-       
+
 
         public async Task InsertItemMenuAsync
          (int idmenu, string nombre, string categoria, string imagen,
@@ -52,7 +52,7 @@ namespace ProyectoRestaurante.Repository
             menu.Categoria = categoria;
             menu.Imagen = imagen;
             menu.Precio = precio;
-           
+
 
             this.context.ItemMenu.Add(menu);
 
@@ -71,7 +71,7 @@ namespace ProyectoRestaurante.Repository
             menu.Categoria = categoria;
             menu.Imagen = imagen;
             menu.Precio = precio;
-            
+
 
             await this.context.SaveChangesAsync();
         }
@@ -200,7 +200,7 @@ namespace ProyectoRestaurante.Repository
             //ASIGNAMOS PROPIEDADES
 
             mesa.Estado = estado;
-           
+
             mesa.Cantidad = cantidad;
             //AÑADIMOS EL MODEL A LA COLECCION CONTEXT
             this.context.Mesa.Add(mesa);
@@ -216,7 +216,7 @@ namespace ProyectoRestaurante.Repository
             Mesa mesa = this.FindMesa(idmesa);
 
             mesa.Estado = estado;
-           
+
             mesa.Cantidad = cantidad;
 
             await this.context.SaveChangesAsync();
@@ -232,5 +232,20 @@ namespace ProyectoRestaurante.Repository
 
             await this.context.SaveChangesAsync();
         }
+
+
+
+        public async Task FindEstadoMesa(int idmesa)
+        {
+            Mesa mesa = this.FindMesa(idmesa);
+
+            mesa.Estado = "Ocupado";
+ 
+            await this.context.SaveChangesAsync();
+        }
+
+
+
     }
+
 }
