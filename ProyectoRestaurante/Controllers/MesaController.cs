@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MvcCoreSeguridadPersonalizada.Filters;
 using ProyectoRestaurante.Models;
 using ProyectoRestaurante.Repository;
 
@@ -12,7 +13,7 @@ namespace ProyectoRestaurante.Controllers
         {
             this.repo = repo;
         }
-
+        [AuthorizeUsers]
         public IActionResult Mesa()
         {
             List<Mesa> Mesas = this.repo.GetMesas();

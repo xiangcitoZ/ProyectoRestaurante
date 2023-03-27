@@ -4,6 +4,7 @@ using NuGet.Configuration;
 using ProyectoRestaurante.Data;
 using ProyectoRestaurante.Helpers;
 using ProyectoRestaurante.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,9 +20,20 @@ builder.Services.AddDbContext<RestauranteContext>
     (options => options.UseSqlServer(connectionString));
 
 
+//SEGURIDAD
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultSignInScheme =
+    CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme =
+    CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme =
+    CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(
+    options => options.EnableEndpointRouting = false);
 
 builder.Services.AddMemoryCache();
 builder.Services.AddDistributedMemoryCache();
@@ -46,11 +58,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseResponseCaching();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Mesa}/{action=Mesa}/{id?}");
+    pattern: "{controller=Managed}/{action=Login}/{id?}");
 
 app.Run();
