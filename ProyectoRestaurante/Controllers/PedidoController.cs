@@ -62,10 +62,10 @@ namespace ProyectoRestaurante.Controllers
             return RedirectToAction("Index", "Home", new { IdMesa = pedido.IdMesa });
         }
 
-        public async Task<IActionResult> Delete(int idpedido)
+        public async Task<IActionResult> Delete(int idpedido, Pedido pedido)
         {
             await this.repo.DeletePedidoAsync(idpedido);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { IdMesa = pedido.IdMesa, descripcion = "Arroz" });
         }
 
 
